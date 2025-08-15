@@ -1,0 +1,16 @@
+We can split the program into two phases:
+1. Parsing
+2. Execution
+
+Parsing:
+1. In this phase, we need to ensure that:
+	a. The user enters a valid .cub file (No random file types, 
+		no incorrect maps, the params at the top of the .cub file must be handled)
+	b. Once the .cub file is verified, we can initialize our data structure(s) and move on to
+		execution
+2. need to finalize how to handle spaces
+3. need to ensure all the elements are present in the map  - F C - correct count
+
+
+
+Execution:
