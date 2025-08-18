@@ -68,11 +68,16 @@ int		get_file_size(char *file);
 
 // my_parsing/map_utils.c
 int		only_spaces(char *str);
+void	check_counts(char c, t_elements *elem);
+int		check_multiple_commas(char *str);
+void	free_str(char **str);
 
 // my_parsing/elements.c
 int		store_elem(t_elements *elem, char *line);
 int		handle_tex(t_elements *elem, char *trim, char **arr);
 int		assign_tex(char **tex, char *trim);
+int		parse_rgb(char c, t_elements *elem, char *str);
+int		handle_color(char **str);
 
 // init.c
 void	init_data(t_data *data);
