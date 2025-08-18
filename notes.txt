@@ -11,6 +11,20 @@ Parsing:
 2. need to finalize how to handle spaces
 3. need to ensure all the elements are present in the map  - F C - correct count
 
+Current parsing flow:
+1. We check whether number of arguments are correct
+2. We check if the file extension is correct
+3. We check if the file can be opened.
+4. We find the size of the file, if 0 then it is thrown as an error 
+5. We create a map structure. 
+
+Errors found:
+1. Try and enter a file like ./cub3d test.cub - It will work
+	a. ./cub3d .cub - It will still accept the file, we only check for extension
+	b. ./cub3d.exe "hello .cub"
+2. The read_file_array may need slight modification, it takes the size variable too now, to 
+	ensure that gnl took the correct number of lines to create the map.
+3. Consider changing the parse elements function to your own logic.
 
 
 Execution:
