@@ -1,94 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/13 23:14:44 by mnazar            #+#    #+#             */
+/*   Updated: 2025/08/18 15:50:56 by nkunnath         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
-int	check_file(char *file)
+int	assign_tex(char **tex, char *trim)
 {
-	int	fd;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		return (1);
-	}
-	close(fd);
-	return (0);
-}
-
-int	get_file_size(char *file)
-{
-	int		fd;
-	int		size;
-	char	*line;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
+	if (*tex)
+		return (print_error("Error: Element already exists\n"));
+	*tex = ft_strdup(trim);
+	if (*tex)
 		return (0);
-	size = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		size++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (size);
+	return (print_error("Error: Strdup failure\n"));
 }
 
-int	print_error(char *str)
+int	store_tex(t_elements *elem, char *trim, char **arr)
 {
-	if (str)
-	{
-		write(2, str, ft_strlen(str));
-		return (1);
-	}
-	return (0);
+	if (ft_strncmp(arr[0], "NO", 3) == 0)
+		return (assign_tex(&elem->no, trim));
+	else if (ft_strncmp(arr[0], "SO", 3) == 0)
+		return (assign_tex(&elem->so, trim));
+	else if (ft_strncmp(arr[0], "WE", 3) == 0)
+		return (assign_tex(&elem->we, trim));
+	else if (ft_strncmp(arr[0], "EA", 3) == 0)
+		return (assign_tex(&elem->ea, trim));
+	return (1);
 }
 
-int	read_file_array(char *file, t_map *map, t_vars var, int size)
+int	parse_elements(t_elements *elem, t_map *map, t_vars vars)
 {
-	int		fd;
-	char	*line;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	line = get_next_line(fd);
-	while (line)
+	while (map->cmap[vars.i] != NULL && elem->all_parsed < 6)
 	{
-		map->cmap[var.i] = line;
-		var.i++;
-		line = get_next_line(fd);
-	}
-	map->cmap[var.i] = NULL;
-	close(fd);
-	if (var.i != size)
-	{
-		fr_array(map->cmap);
-		return (1);
-	}
-	return (0);
-}
-
-int	parse_elements(t_elements *elem, t_map *map, t_vars *vars)
-{
-	while (map->cmap[vars->i] && elem->all_parsed < 6)
-	{
-		if (only_spaces(map->cmap[vars->i]))
+		if (!only_spaces(map->cmap[vars.i]))
 		{
-			if (store_elem(elem, map->cmap[vars->i]) == 0)
+			if (store_elem(elem, map->cmap[vars.i]) == 0)
 				elem->all_parsed++;
 			else
-				return (print_error("Error: Invalid/Missing element\n"));
+				return (print_error("Error: .cub file has invalid or missing elements\n"));
 		}
-		vars->i++;
+		vars.i += 1;
 	}
-	if (elem->all_parsed < 6)
-		return (print_error("Error: Missing elements\n"));
-	while (map->cmap[vars->i] && !only_spaces(map->cmap[vars->i]))
-		vars->i++;
-	if (store_map(map, vars->i))
-		return (1);
 	return (0);
 }
 
@@ -97,10 +56,11 @@ int	parse_map(char *argv, t_data *data)
 	t_map		*map;
 	t_vars		vars;
 	int			size;
-	t_elements	*elements;
+	t_elements	*elems;
 
 	init_vars(&vars);
 	map = &data->map;
+	elems = &data->elements;
 	if (check_file(argv))
 		return (1);
 	size = get_file_size(argv);
@@ -111,7 +71,7 @@ int	parse_map(char *argv, t_data *data)
 		return (print_error("Error: During Map Malloc\n"));
 	if (read_file_array(argv, map, vars, size))
 		return (print_error("Error: During CMap creation\n"));
-	if (parse_elements(elements, map, vars))
+	if (parse_elements(elems, map, vars))
 		return (1);
 	return (0);
 }

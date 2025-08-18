@@ -27,6 +27,8 @@ typedef struct s_elements
 	char			*so;
 	char			*we;
 	char			*ea;
+	int				floor_count;
+	int				ceil_count;
 	int				floor;
 	int				ceiling;
 	int				all_parsed;
@@ -55,10 +57,22 @@ typedef struct s_data
 
 // my_parsing/parse_map.c
 int		parse_map(char *argv, t_data *data);
+int		parse_elements(t_elements *elems, t_map *map, t_vars vars);
+int		store_tex(t_elements *elem, char *trim, char **arr);
+
+// my_parsing/file_utils.c
 int		check_file(char *file);
-int		read_file_array(char *file, t_map *map, t_vars var, int size);
+int		read_file_array(char *file, t_map *map, t_vars vars, int size);
 int		print_error(char *str);
 int		get_file_size(char *file);
+
+// my_parsing/map_utils.c
+int		only_spaces(char *str);
+
+// my_parsing/elements.c
+int		store_elem(t_elements *elem, char *line);
+int		handle_tex(t_elements *elem, char *trim, char **arr);
+int		assign_tex(char **tex, char *trim);
 
 // init.c
 void	init_data(t_data *data);
@@ -66,5 +80,6 @@ void	init_vars(t_vars *vars);
 
 // free.c
 void	fr_array(char **arr);
+void	free_data(t_data *data);
 
 #endif

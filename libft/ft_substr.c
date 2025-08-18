@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 22:50:40 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/18 15:43:21 by nkunnath         ###   ########.fr       */
+/*   Created: 2024/06/27 18:31:05 by mnazar            #+#    #+#             */
+/*   Updated: 2025/08/18 14:26:25 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void fr_array(char **arr)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
+	char	*sub;
+	size_t	i;
 
 	i = 0;
-	while (arr[i])
+	if (!s)
+		return (NULL);
+	if (start >= (unsigned int)ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > (size_t)ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	sub = (char *)malloc(len + 1 * sizeof(char));
+	if (sub == NULL)
+		return (NULL);
+	while (i < len)
 	{
-		free(arr[i]);
-		arr[i] = NULL;
+		sub[i] = s[start + i];
 		i++;
 	}
-	free(arr);
-	arr = NULL;
-}
-
-void	free_data(t_data *data)
-{
-	free(data->map.fullcub);
-	if (data->map.cmap)
-		fr_array(data->map.cmap);
-	if (data->map.map)
-		fr_array(data->map.map);
-	free(data->elements.no);
-	free(data->elements.so);
-	free(data->elements.we);
-	free(data->elements.ea);
+	sub[i] = '\0';
+	return (sub);
 }

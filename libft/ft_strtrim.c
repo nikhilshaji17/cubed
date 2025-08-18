@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 22:45:09 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/18 15:43:05 by nkunnath         ###   ########.fr       */
+/*   Created: 2024/06/27 18:28:52 by mnazar            #+#    #+#             */
+/*   Updated: 2025/08/18 14:24:47 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **argv)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	t_data	data;
-	if (ac != 2)
-	{
-		printf("Error: Invalid number of arguments\n");
-		return (1);
-	}
-	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4) != 0)
-	{
-		printf("Error: Invalid file extension\n");
-		return (1);
-	}
-	init_data(&data);
-	if (parse_map(argv[1], &data))
-	{
-		free_data(&data);
-		return (1);
-	}
-	printf("Fine so far\n");
-	return (0);
+	size_t	i;
+
+	if (!s1 || !set)
+		return (NULL);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	if (!s1)
+		return ("");
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }

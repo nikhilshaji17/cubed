@@ -26,5 +26,21 @@ Errors found:
 	ensure that gnl took the correct number of lines to create the map.
 3. Consider changing the parse elements function to your own logic.
 
+Things to consider while parsing elements:
+1. Ensure NO is there
+2. Ensure SO is there
+3. Ensure WE is there
+4. Ensure EA is there
+5. Ensure F is there
+6. Ensure C is there
+7. Ensure nothing else is there - We do this by ensuring that there are only 6 elements apart from the map
+8. We skip over \n sentences and sentences with only spaces using only_spaces check
+9. We ensure that the order of the .cub file is intact by keeping a count of the first 6
+	sentence in our .cub file (that exclude pure \t and space only lines). If there is
+	an invalid element in our file (like NOP or ABC ./file_path), then it returns an error.
+	It also enforces the order of our .cub file by checking whether the map comes above the 
+	required sentences too, and returning an error if it is incorrect.
+10. 
+
 
 Execution:
