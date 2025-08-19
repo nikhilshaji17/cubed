@@ -6,7 +6,7 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 00:11:40 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/18 18:18:29 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:46:17 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ int	store_elem(t_elements *elem, char *line)
 	else
 		return (free(trim), 1);
 	if (elem->floor == -1 || elem->ceiling == -1)
-		return (free(trim), 1);
-	if (elem->floor_count != 1 || elem->ceil_count != 1)
 		return (free(trim), 1);
 	free(trim);
 	return (0);

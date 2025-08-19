@@ -6,7 +6,7 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 23:14:44 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/18 15:50:56 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/19 15:43:45 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	assign_tex(char **tex, char *trim)
 {
-	if (*tex)
-		return (print_error("Error: Element already exists\n"));
 	*tex = ft_strdup(trim);
 	if (*tex)
 		return (0);
@@ -25,29 +23,53 @@ int	assign_tex(char **tex, char *trim)
 int	store_tex(t_elements *elem, char *trim, char **arr)
 {
 	if (ft_strncmp(arr[0], "NO", 3) == 0)
+	{
+		elem->no_count += 1;
 		return (assign_tex(&elem->no, trim));
+	}
 	else if (ft_strncmp(arr[0], "SO", 3) == 0)
+	{
+		elem->so_count += 1;
 		return (assign_tex(&elem->so, trim));
+	}
 	else if (ft_strncmp(arr[0], "WE", 3) == 0)
+	{
+		elem->we_count += 1;
 		return (assign_tex(&elem->we, trim));
+	}
 	else if (ft_strncmp(arr[0], "EA", 3) == 0)
+	{
+		elem->ea_count += 1;
 		return (assign_tex(&elem->ea, trim));
+	}
 	return (1);
 }
 
 int	parse_elements(t_elements *elem, t_map *map, t_vars vars)
 {
-	while (map->cmap[vars.i] != NULL && elem->all_parsed < 6)
+	while (map->cmap[vars.i] != NULL)
 	{
 		if (!only_spaces(map->cmap[vars.i]))
 		{
 			if (store_elem(elem, map->cmap[vars.i]) == 0)
-				elem->all_parsed++;
+				elem->all_parsed += 1;
 			else
-				return (print_error("Error: .cub file has invalid or missing elements\n"));
+			{
+				while (map->cmap[vars.i][vars.j])
+				{
+					if (ft_strchr("1\n ", map->cmap[vars.i][vars.j]) == NULL)
+						return (print_error("Error: Issue with .cub\n"));
+					vars.j += 1;
+				}
+				break ;
+			}
 		}
 		vars.i += 1;
 	}
+	if (elem->no_count != 1 || elem->so_count != 1 || elem->ea_count != 1 || elem->we_count != 1)
+		return (print_error("Error: Incorrect textures\n"));
+	if (elem->ceil_count != 1 || elem->floor_count != 1 || elem->all_parsed != 6)
+		return (print_error("Error: Incorrect element count\n"));
 	return (0);
 }
 

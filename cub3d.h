@@ -29,6 +29,10 @@ typedef struct s_elements
 	char			*ea;
 	int				floor_count;
 	int				ceil_count;
+	int				no_count;
+	int				so_count;
+	int				ea_count;
+	int				we_count;
 	int				floor;
 	int				ceiling;
 	int				all_parsed;
