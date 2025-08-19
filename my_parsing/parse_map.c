@@ -6,7 +6,7 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 23:14:44 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/19 15:43:45 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/19 17:28:11 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,11 @@ int	parse_elements(t_elements *elem, t_map *map, t_vars vars)
 		}
 		vars.i += 1;
 	}
-	if (elem->no_count != 1 || elem->so_count != 1 || elem->ea_count != 1 || elem->we_count != 1)
-		return (print_error("Error: Incorrect textures\n"));
-	if (elem->ceil_count != 1 || elem->floor_count != 1 || elem->all_parsed != 6)
-		return (print_error("Error: Incorrect element count\n"));
+	if (elem->no_count != 1 || elem->so_count != 1 || elem->ea_count != 1 || elem->we_count != 1
+		|| elem->ceil_count != 1 || elem->floor_count != 1 || elem->all_parsed != 6)
+		return (print_error("Error: Incomplete .cub file\n"));
+	if (store_map(map, vars.i))
+		return (1);
 	return (0);
 }
 

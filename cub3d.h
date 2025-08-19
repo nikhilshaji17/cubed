@@ -83,6 +83,9 @@ int		assign_tex(char **tex, char *trim);
 int		parse_rgb(char c, t_elements *elem, char *str);
 int		handle_color(char **str);
 
+// my_parsing/store_map.c
+int		store_map(t_map *map, int start);
+
 // init.c
 void	init_data(t_data *data);
 void	init_vars(t_vars *vars);
