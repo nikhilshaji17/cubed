@@ -40,7 +40,16 @@ Things to consider while parsing elements:
 	an invalid element in our file (like NOP or ABC ./file_path), then it returns an error.
 	It also enforces the order of our .cub file by checking whether the map comes above the 
 	required sentences too, and returning an error if it is incorrect.
-10. 
+
+Storing the map:
+The store_map() function just tries to find the number of rows in the map:
+1. Find the beginning of the map
+2. Find the ending of the map
+3. Check whether empty lines in between
+
+Validate the map:
+1. Check if spaces present in map
+2. Check if other extra characters ready in the map
 
 
 Execution:

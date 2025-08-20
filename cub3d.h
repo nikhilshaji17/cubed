@@ -85,6 +85,11 @@ int		handle_color(char **str);
 
 // my_parsing/store_map.c
 int		store_map(t_map *map, int start);
+int		empty_line(char *str);
+int		copy_map(t_map *map, int start);
+int		check_map_space(t_map *map, int i, int j);
+int		validate_spaces(t_map *map);
+
 
 // init.c
 void	init_data(t_data *data);

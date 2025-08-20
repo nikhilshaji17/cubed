@@ -1,5 +1,6 @@
 NAME = cub3d
-CC = cc
+CC = gcc 
+# CC = cc This is for MAC
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c init.c free.c \

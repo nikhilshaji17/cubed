@@ -32,5 +32,6 @@ int	main(int ac, char **argv)
 		return (1);
 	}
 	printf("Fine so far\n");
+	free_data(&data);
 	return (0);
 }
