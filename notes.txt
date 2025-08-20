@@ -48,8 +48,10 @@ The store_map() function just tries to find the number of rows in the map:
 3. Check whether empty lines in between
 
 Validate the map:
+The validate_map() function checks whether only the correct characters are in the map (01NSEW, and whether multiple players or none are present)
 1. Check if spaces present in map
-2. Check if other extra characters ready in the map
+2. Check if other extra characters in the map
+3. Check if only 1 player is present.
 
 
 Execution:
