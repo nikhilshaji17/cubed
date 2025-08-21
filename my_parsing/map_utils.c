@@ -38,14 +38,6 @@ int	check_multiple_commas(char *str)
 	return (0);
 }
 
-void	check_counts(char c, t_elements *elem)
-{
-	if (c == 'F')
-		elem->floor_count += 1;
-	if (c == 'C')
-		elem->ceil_count += 1;
-}
-
 void	free_str(char **str)
 {
 	if (str && *str)
