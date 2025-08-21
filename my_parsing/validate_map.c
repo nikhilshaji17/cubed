@@ -12,6 +12,55 @@
 
 #include "../cub3d.h"
 
+int	check_neighbours(t_map *map, int i, int j)
+{
+	int	rlen;
+
+	rlen = (int)ft_strlen(map->map[i]);
+	if (i <= 0 || i >= map->rows - 1 || j <= 0 || j >= rlen - 1)
+		return (0);
+	if (j + 1 >= rlen || map->map[i][j + 1] == '\0'
+		|| map->map[i][j + 1] == ' ')
+		return (0);
+	if (j - 1 < 0 || map->map[i][j - 1] == '\0' || map->map[i][j - 1] == ' ')
+		return (0);
+	if (i + 1 >= map->rows || j >= (int)ft_strlen(map->map[i + 1])
+		|| map->map[i + 1][j] == '\0' || map->map[i + 1][j] == ' ')
+		return (0);
+	if (i - 1 < 0 || j >= (int)ft_strlen(map->map[i - 1])
+		|| map->map[i - 1][j] == '\0' || map->map[i - 1][j] == ' ')
+		return (0);
+	return (1);
+}
+
+int	valid_zero_player(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < map->rows - 1)
+	{
+		j = 1;
+		while (j < (int)ft_strlen(map->map[i]) - 1)
+		{
+			if (map->map[i][j] == '0')
+			{
+				if (check_neighbours(map, i, j) == 0)
+					return (print_error("Error: Floor not enclosed\n"));
+			}
+			else if (map->map[i][j] == map->direction)
+			{
+				if (check_neighbours(map, i, j) == 0)
+					return (print_error("Error: Player not enclosed\n"));
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	validate_map_chars(t_map *map, t_vars vars)
 {
 	init_vars(&vars);
@@ -79,7 +128,7 @@ int	validate_map(t_map *map)
 		return (1);
 	if (validate_spaces(map) == 1)
 		return (1);
-	// if (valid_zero_player(map) == 1)
-	// 	return (1);
+	if (valid_zero_player(map) == 1)
+		return (1);
 	return (0);
 }

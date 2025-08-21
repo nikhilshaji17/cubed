@@ -98,6 +98,8 @@ int		copy_map(t_map *map, int start);
 int		validate_map(t_map *map);
 int		validate_map_chars(t_map *map, t_vars vars);
 int		validate_map_walls(t_map *map, t_vars vars);
+int		valid_zero_player(t_map *map);
+int		check_neighbours(t_map *map, int i, int j);
 
 // my_parsing/validate_utils.c
 int		check_eastside(t_map *map, int i, int j);
