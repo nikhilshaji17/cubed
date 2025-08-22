@@ -55,3 +55,13 @@ The validate_map() function checks whether only the correct characters are in th
 
 
 Execution:
+1. We call the init_start_game() function.
+2. We first call mlx_init() to get our mlx pointer ready.
+3. Then we call the init_texture() function, which tries
+	to convert the xpm texture files into usuable mlx
+	images.
+4. We push images to the window, because putting pixels individually would be a very time consuming process.
+5. We then initialize details about the player:
+	a. Position (posX, posY): Where the player is in the 2D world.
+	b. Direction Vector (dirX, dirY): A line showing which way the player is facing.
+	c. Camera Plane Vector (planeX, planeY): A line, perpendicular to the direction, that represents the "screen" or the width of the player's field of view (FOV).

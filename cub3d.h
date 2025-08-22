@@ -6,8 +6,30 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <sys/time.h>
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
+# include "minilibx_mac/mlx.h"
+
+# define ESC_KEY 53
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
+# define RIGHT_ARROW 124
+# define LEFT_ARROW 123
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
+
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
 
 typedef struct s_map
 {
@@ -45,17 +67,74 @@ typedef struct s_vars
 	int				k;
 }					t_vars;
 
+typedef struct s_image
+{
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+	int				width;
+	int				height;
+}					t_image;
+
+typedef struct s_textures
+{
+	t_image			no;
+	t_image			so;
+	t_image			we;
+	t_image			ea;
+}					t_textures;
+
+typedef struct s_mlx
+{
+	void			*mlx;
+	void			*win;
+	t_image			img;
+}			t_mlx;
+
+typedef struct s_player
+{
+	double			posX;
+	double			posY;
+	double			dirX;
+	double			dirY;
+	double			planeX;
+	double			planeY;
+}					t_player;
+
+typedef struct s_ray
+{
+	double			camera_x;
+	double			ray_dir_x;
+	double			ray_dir_y;
+	int				map_x;
+	int				map_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			perp_wall_dist;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+	double			wallx;
+	int				line_height;
+	int				tex_num;
+}					t_ray;
+
 typedef struct s_data
 {
 	t_elements		elements;
-	// t_mlx			mlx;
+	t_mlx			mlx;
 	t_map			map;
-	// t_player		player;
-	// t_image			image;
-	// t_ray			ray;
-	// t_textures		texture;
+	t_player		player;
+	t_image			image;
+	t_ray			ray;
+	t_textures		texture;
 	double			delta_time;
-	// struct timeval	last;
+	struct timeval	last;
 	bool			keys[7];
 }					t_data;
 
@@ -107,12 +186,23 @@ int		check_westside(t_map *map, int i, int j);
 int		check_southside(t_map *map, int i, int j);
 int		check_northside(t_map *map, int i, int j);
 
+// execution/hooks.c
+void    mlx_loops_hooks(t_data *data);
+int		render_frames(t_data *data);
+int		key_press(int keycode, t_data *data);
+int		key_release(int keycode, t_data *data);
+int		exit_window(t_data *data);
+
 // init.c
 void	init_data(t_data *data);
 void	init_vars(t_vars *vars);
+void	init_texture(t_data *data);
+void	xpm_to_image(t_data *data);
+void	init_player(t_data *data);
 
 // free.c
 void	fr_array(char **arr);
 void	free_data(t_data *data);
+void	destroy_image(t_data *data);
 
 #endif

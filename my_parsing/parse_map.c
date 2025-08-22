@@ -6,7 +6,7 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 23:14:44 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/19 17:28:11 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/22 14:06:38 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	parse_elements(t_elements *elem, t_map *map, t_vars vars)
 			{
 				while (map->cmap[vars.i][vars.j])
 				{
-					if (ft_strchr("1\n ", map->cmap[vars.i][vars.j]) == NULL)
+					if (ft_strchr("1\n\r ", map->cmap[vars.i][vars.j]) == NULL)
 						return (print_error("Error: Issue with .cub\n"));
 					vars.j += 1;
 				}

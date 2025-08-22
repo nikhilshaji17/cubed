@@ -6,11 +6,39 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 22:45:09 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/18 15:43:05 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/22 18:42:17 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_start_game(t_data *data)
+{
+	gettimeofday(&data->last, NULL);
+	data->mlx.mlx = mlx_init();
+	if (!data->mlx.mlx)
+	{
+		printf("Error: mlx_init failed\n");
+		free_data(data);
+		exit(1);
+	}	
+	init_texture(data);
+	data->mlx.win = mlx_new_window(data->mlx.mlx, WIN_WIDTH, WIN_HEIGHT,
+			"cub3D");
+	if (!data->mlx.win)
+	{
+		printf("Error: mlx_new_window failed\n");
+		destroy_image(data);
+		free(data->mlx.mlx);
+		free_data(data);
+		exit(1);
+	}
+	data->image.img = mlx_new_image(data->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
+	data->image.addr = mlx_get_data_addr(data->image.img, &data->image.bpp,
+			&data->image.line_len, &data->image.endian);
+	init_player(data);
+	mlx_loops_hooks(data);
+}
 
 int	main(int ac, char **argv)
 {
@@ -31,7 +59,7 @@ int	main(int ac, char **argv)
 		free_data(&data);
 		return (1);
 	}
-	printf("Fine so far\n");
+	init_start_game(&data);
 	free_data(&data);
 	return (0);
 }

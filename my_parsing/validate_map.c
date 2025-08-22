@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 23:14:44 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/19 17:28:11 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/22 13:01:40 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int	validate_map(t_map *map)
 {
 	t_vars	vars;
 
+	init_vars(&vars);
 	if (validate_map_chars(map, vars) == 1)
 		return (1);
 	if (validate_map_walls(map, vars) == 1)
