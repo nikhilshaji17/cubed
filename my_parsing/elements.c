@@ -6,7 +6,7 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 00:11:40 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/19 17:23:11 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/25 17:52:38 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	handle_tex(t_elements *elem, char *trim, char **arr)
 	{
 		free(trim);
 		fr_array(arr);
-		return (print_error("Error: Texture files are incorrect"));
+		return (print_error("Error: Texture files are incorrect\n"));
 	}
 	free(trim);
 	trim = ft_strtrim(arr[1], " \t\v\f\r");

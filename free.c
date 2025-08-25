@@ -6,7 +6,7 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 22:50:40 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/22 16:02:25 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/25 17:17:46 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void	free_data(t_data *data)
 	free(data->elements.ea);
 }
 
-void	destroy_image(t_data *data)
-{
-	if (data->texture.no.img)
-		mlx_destroy_image(data->mlx.mlx, data->texture.no.img);
-	if (data->texture.so.img)
-		mlx_destroy_image(data->mlx.mlx, data->texture.so.img);
-	if (data->texture.we.img)
-		mlx_destroy_image(data->mlx.mlx, data->texture.we.img);
-	if (data->texture.ea.img)
-		mlx_destroy_image(data->mlx.mlx, data->texture.ea.img);
-}
+// void	destroy_image(t_data *data)
+// {
+// 	if (data->texture.no.img)
+// 		mlx_destroy_image(data->mlx.mlx, data->texture.no.img);
+// 	if (data->texture.so.img)
+// 		mlx_destroy_image(data->mlx.mlx, data->texture.so.img);
+// 	if (data->texture.we.img)
+// 		mlx_destroy_image(data->mlx.mlx, data->texture.we.img);
+// 	if (data->texture.ea.img)
+// 		mlx_destroy_image(data->mlx.mlx, data->texture.ea.img);
+// }

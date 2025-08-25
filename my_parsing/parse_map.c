@@ -6,7 +6,7 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 23:14:44 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/22 14:06:38 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/25 17:51:04 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	assign_tex(char **tex, char *trim)
 {
+	if (*tex != NULL)
+		return (0);
 	*tex = ft_strdup(trim);
 	if (*tex)
 		return (0);

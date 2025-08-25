@@ -54,6 +54,12 @@ The validate_map() function checks whether only the correct characters are in th
 3. Check if only 1 player is present.
 
 
+Changes made parsing (25th August 2025):
+1. In store_map.c, we changed the empty_line() function to include \r as well.
+2. In parse_map.c, we changed assign_tex() to handle leaks.
+3.
+ 
+
 Execution:
 1. We call the init_start_game() function.
 2. We first call mlx_init() to get our mlx pointer ready.

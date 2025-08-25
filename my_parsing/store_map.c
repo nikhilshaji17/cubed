@@ -6,7 +6,7 @@
 /*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 17:29:47 by nkunnath          #+#    #+#             */
-/*   Updated: 2025/08/19 17:43:13 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/25 17:41:36 by nkunnath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	empty_line(char *str)
 {
-	if (*str == '\n')
-		str++;
-	return (*str == '\0');
+	if (*str == '\n' || *str == '\r')
+		return (1);
+	return (0);
 }
 
 int	copy_map(t_map *map, int start)

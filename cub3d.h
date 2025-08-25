@@ -9,7 +9,7 @@
 # include <sys/time.h>
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
-# include "minilibx_mac/mlx.h"
+// # include "minilibx_mac/mlx.h"
 
 # define ESC_KEY 53
 # define W_KEY 13
@@ -187,22 +187,22 @@ int		check_southside(t_map *map, int i, int j);
 int		check_northside(t_map *map, int i, int j);
 
 // execution/hooks.c
-void    mlx_loops_hooks(t_data *data);
-int		render_frames(t_data *data);
-int		key_press(int keycode, t_data *data);
-int		key_release(int keycode, t_data *data);
-int		exit_window(t_data *data);
+// void    mlx_loops_hooks(t_data *data);
+// int		render_frames(t_data *data);
+// int		key_press(int keycode, t_data *data);
+// int		key_release(int keycode, t_data *data);
+// int		exit_window(t_data *data);
 
 // init.c
 void	init_data(t_data *data);
 void	init_vars(t_vars *vars);
-void	init_texture(t_data *data);
-void	xpm_to_image(t_data *data);
-void	init_player(t_data *data);
+// void	init_texture(t_data *data);
+// void	xpm_to_image(t_data *data);
+// void	init_player(t_data *data);
 
 // free.c
 void	fr_array(char **arr);
 void	free_data(t_data *data);
-void	destroy_image(t_data *data);
+// void	destroy_image(t_data *data);
 
 #endif
