@@ -1,0 +1,20 @@
+<script>start("/Users/mnazar/Desktop/nikhilcub3d/minilibx_mac/");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("font.c","font.c",0,272463,"266 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("font.xcf","font.xcf",0,52570,"51.3 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("Makefile","Makefile",0,405,"405 B",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_init_loop.m","mlx_init_loop.m",0,4734,"4.6 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_int_str_to_wordtab.c","mlx_int_str_to_wordtab.c",0,1603,"1.6 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_int.h","mlx_int.h",0,2062,"2.0 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_mouse.m","mlx_mouse.m",0,1098,"1.1 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_new_image.m","mlx_new_image.m",0,5050,"4.9 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_new_window.h","mlx_new_window.h",0,1607,"1.6 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_new_window.m","mlx_new_window.m",0,22804,"22.3 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_opengl.h","mlx_opengl.h",0,584,"584 B",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_opengl.m","mlx_opengl.m",0,1203,"1.2 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_png.c","mlx_png.c",0,13112,"12.8 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_png.h","mlx_png.h",0,84,"84 B",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_rgb.c","mlx_rgb.c",0,21557,"21.1 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_shaders.c","mlx_shaders.c",0,6839,"6.7 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx_xpm.c","mlx_xpm.c",0,6952,"6.8 kB",1756298078,"8/27/25, 4:34:38 PM");</script>
+<script>addRow("mlx.h","mlx.h",0,3876,"3.8 kB",1756298078,"8/27/25, 4:34:38 PM");</script>

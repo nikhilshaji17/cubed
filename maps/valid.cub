@@ -1,10 +1,9 @@
-NO ./textures/wall_north.xpm
-SO ./textures/wall_south.xpm
-WE ./textures/wall_west.xpm
-EA ./textures/wall_east.xpm
+NO ./textures/Bark.xpm
+SO ./textures/Glass.xpm
+WE ./textures/Grass.xpm
+EA ./textures/Stone.xpm
 F 220,100,0
 C 100,100,255
-EA ./textures/wall_east.xpm
 111111
 100001
 10N001
