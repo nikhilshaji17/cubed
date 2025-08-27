@@ -1,10 +1,12 @@
-NO  tex/large.xpm          
-SO  tex/large.xpm
-EA  tex/large.xpm
-WE  tex/Grass.xpm                                                          
+NO ./textures/Bark.xpm
+SO ./textures/Glass.xpm
+WE ./textures/Grass.xpm
+EA ./textures/Stone.xpm                                                     
 C 255,30,0   
 F 220,100,0 
 
-  1 
- 1N1
-  1
+111111
+100001
+10N001
+100001
+111111
