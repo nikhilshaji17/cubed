@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkunnath <nkunnath@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnazar <mnazar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 23:13:36 by mnazar            #+#    #+#             */
-/*   Updated: 2025/08/18 13:19:32 by nkunnath         ###   ########.fr       */
+/*   Updated: 2025/08/29 12:40:38 by mnazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_file(char *file)
 {
 	int	fd;
 
-	fd = open(file, O_RDONLY);
+	fd = open(file, O_RDONLY | O_NOFOLLOW);
 	if (fd < 0)
 	{
 		perror("Error opening file");
