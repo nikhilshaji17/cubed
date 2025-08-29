@@ -2,18 +2,15 @@ NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-# Directories
 MLX_DIR = ./minilibx_mac
 # MLX_DIR = ./minilibx
 LIBFT_DIR = ./libft
 GNL_DIR = ./get_next_line
 
-# Libraries
 MLX = $(MLX_DIR)/libmlx.a -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 # MLX = $(MLX_DIR)/libmlx_Linux.a -L$(MLX_DIR) -lmlx -lXext -lX11 -lm  #keep only one
 LIBFT = $(LIBFT_DIR)/libft.a
 
-# Sources
 SRC = main.c init.c free.c \
 	  parsing/elements.c parsing/file_utils.c parsing/map_utils.c \
 	  parsing/parse_map.c parsing/validate_map.c parsing/store_map.c \
@@ -23,10 +20,8 @@ SRC = main.c init.c free.c \
 
 OBJ = $(SRC:.c=.o)
 
-# Include paths
 INCLUDES = -Iinc -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR)
 
-# Build rules
 all: $(NAME)
 
 $(NAME): $(OBJ)
